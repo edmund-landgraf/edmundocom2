@@ -7,32 +7,33 @@
 <section class="hero-section">
     <div class="container hero-grid">
         <div>
-            <p class="eyebrow">Personal site rebuild</p>
-            <h1>A home base for notes, projects, photos, videos, and the occasional useful tangent.</h1>
+            <p class="eyebrow">edmundo.com</p>
+            <h1>A personal place for what I am doing, where I have been, and what I want to keep handy.</h1>
             <p class="hero-copy">
-                edmundo.com is the personal side of things: writing, experiments, family-friendly media,
-                project notes, and pointers to business work through unwhelm.net.
+                Notes, activities, trips, photos, videos, projects, and a public link shelf. Business work can still point
+                cleanly to <a href="https://unwhelm.net">unwhelm.net</a>.
             </p>
             <div class="hero-actions">
-                <a class="button-primary" asp-page="/Blog">Read the blog</a>
-                <a class="button-secondary" asp-page="/PhotosVideos">See media</a>
+                <a class="button-primary" asp-page="/Activities">Activities</a>
+                <a class="button-secondary" asp-page="/Trips">Trips</a>
+                <a class="button-secondary" asp-page="/Links">Links</a>
             </div>
         </div>
-        <div class="status-panel" aria-label="Site status">
+        <div class="status-panel personal-panel" aria-label="Personal site sections">
             <span class="status-dot"></span>
-            <h2>Site sections</h2>
+            <h2>Personal shelves</h2>
             <dl>
                 <div>
-                    <dt>Personal</dt>
-                    <dd>Blog & media</dd>
+                    <dt>Doing</dt>
+                    <dd>Activities</dd>
                 </div>
                 <div>
-                    <dt>Work</dt>
-                    <dd>Portfolio</dd>
+                    <dt>Going</dt>
+                    <dd>Trips</dd>
                 </div>
                 <div>
-                    <dt>Business</dt>
-                    <dd>unwhelm.net</dd>
+                    <dt>Saving</dt>
+                    <dd>Links</dd>
                 </div>
             </dl>
         </div>
@@ -42,16 +43,19 @@
 <section class="content-band">
     <div class="container feature-grid">
         <article>
-            <h2>Writing</h2>
-            <p>Short posts, longer notes, and practical thoughts that do not need to live inside a social feed.</p>
+            <h2>Activities</h2>
+            <p>Current interests, recurring things, projects-in-motion, and the ordinary rhythms worth remembering.</p>
+            <a asp-page="/Activities">Open activities</a>
         </article>
         <article>
-            <h2>Projects</h2>
-            <p>A place to collect software work, experiments, repairs, launches, and lessons from the build process.</p>
+            <h2>Trips</h2>
+            <p>Places visited, plans in progress, travel notes, photos, routes, and little discoveries along the way.</p>
+            <a asp-page="/Trips">Open trips</a>
         </article>
         <article>
-            <h2>Media</h2>
-            <p>Photos and videos can live here in organized sections instead of vanishing into camera-roll archaeology.</p>
+            <h2>Public links</h2>
+            <p>A tidy launch point for resources, albums, shared docs, and destinations that may ask for authentication.</p>
+            <a asp-page="/Links">Open links</a>
         </article>
     </div>
 </section>
@@ -59,13 +63,17 @@
 <section class="split-section">
     <div class="container split-grid">
         <div class="section-intro">
-            <p class="eyebrow">Personal and professional</p>
-            <h2>edmundo.com can stay human while unwhelm.net carries the business front door.</h2>
+            <p class="eyebrow">Personal, not corporate</p>
+            <h2>Quiet pages for real-life categories.</h2>
+            <p>
+                The site can grow around activities, travel, media, writing, and personal references without turning into
+                a heavy portfolio page.
+            </p>
         </div>
         <div class="note-stack">
             <div>
                 <h3>Here</h3>
-                <p>Personal writing, photos, videos, portfolio notes, and experiments.</p>
+                <p>Personal notes, activities, trips, photos, videos, projects, and public link shortcuts.</p>
             </div>
             <div>
                 <h3>unwhelm.net</h3>
