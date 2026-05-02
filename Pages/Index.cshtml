@@ -1,0 +1,76 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<section class="hero-section">
+    <div class="container hero-grid">
+        <div>
+            <p class="eyebrow">Personal site rebuild</p>
+            <h1>A home base for notes, projects, photos, videos, and the occasional useful tangent.</h1>
+            <p class="hero-copy">
+                edmundo.com is the personal side of things: writing, experiments, family-friendly media,
+                project notes, and pointers to business work through unwhelm.net.
+            </p>
+            <div class="hero-actions">
+                <a class="button-primary" asp-page="/Blog">Read the blog</a>
+                <a class="button-secondary" asp-page="/PhotosVideos">See media</a>
+            </div>
+        </div>
+        <div class="status-panel" aria-label="Site status">
+            <span class="status-dot"></span>
+            <h2>Site sections</h2>
+            <dl>
+                <div>
+                    <dt>Personal</dt>
+                    <dd>Blog & media</dd>
+                </div>
+                <div>
+                    <dt>Work</dt>
+                    <dd>Portfolio</dd>
+                </div>
+                <div>
+                    <dt>Business</dt>
+                    <dd>unwhelm.net</dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+</section>
+
+<section class="content-band">
+    <div class="container feature-grid">
+        <article>
+            <h2>Writing</h2>
+            <p>Short posts, longer notes, and practical thoughts that do not need to live inside a social feed.</p>
+        </article>
+        <article>
+            <h2>Projects</h2>
+            <p>A place to collect software work, experiments, repairs, launches, and lessons from the build process.</p>
+        </article>
+        <article>
+            <h2>Media</h2>
+            <p>Photos and videos can live here in organized sections instead of vanishing into camera-roll archaeology.</p>
+        </article>
+    </div>
+</section>
+
+<section class="split-section">
+    <div class="container split-grid">
+        <div class="section-intro">
+            <p class="eyebrow">Personal and professional</p>
+            <h2>edmundo.com can stay human while unwhelm.net carries the business front door.</h2>
+        </div>
+        <div class="note-stack">
+            <div>
+                <h3>Here</h3>
+                <p>Personal writing, photos, videos, portfolio notes, and experiments.</p>
+            </div>
+            <div>
+                <h3>unwhelm.net</h3>
+                <p>Business services, client-facing language, and the cleaner consulting lane.</p>
+            </div>
+        </div>
+    </div>
+</section>
