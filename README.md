@@ -49,3 +49,21 @@ Routes provided by the sub-app:
 /Blog
 /Blog/{slug}
 ```
+
+## Admin
+
+The admin panel is available at `/Admin` and currently provides one option: add/edit blog entries.
+
+Set the admin password outside source control:
+
+```powershell
+dotnet user-secrets set "Admin:UserName" "edmund"
+dotnet user-secrets set "Admin:Password" "your-admin-password"
+```
+
+For hosting, use environment variables:
+
+```text
+Admin__UserName
+Admin__Password
+```

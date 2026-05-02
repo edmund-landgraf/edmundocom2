@@ -1,0 +1,14 @@
+@page
+@model OAuthCallbackModel
+@attribute [Microsoft.AspNetCore.Authorization.Authorize(Policy = "AdminOnly")]
+@{
+    ViewData["Title"] = "Google Photos Connected";
+}
+
+<section class="page-section">
+    <div class="container narrow">
+        <p class="eyebrow">Admin</p>
+        <h1>Connecting Google Photos</h1>
+        <p>Returning to the photo admin area.</p>
+    </div>
+</section>

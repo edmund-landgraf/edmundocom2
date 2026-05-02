@@ -1,0 +1,24 @@
+@page
+@attribute [Microsoft.AspNetCore.Authorization.Authorize(Policy = "AdminOnly")]
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<section class="page-section">
+    <div class="container narrow">
+        <p class="eyebrow">Admin</p>
+        <h1>Site admin</h1>
+        <div class="admin-action-list">
+            <a class="admin-action" asp-page="/Admin/Blog/Index">
+                <span>Add/Edit</span>
+                <strong>Blog Entries</strong>
+                <em>Create, edit, publish, or draft Markdown blog posts.</em>
+            </a>
+            <a class="admin-action" asp-page="/Admin/Photos/Index">
+                <span>Share</span>
+                <strong>Photos &amp; Videos</strong>
+                <em>Use Google Photos Picker to publish selected media on edmundo.com.</em>
+            </a>
+        </div>
+    </div>
+</section>

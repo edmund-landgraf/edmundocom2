@@ -1,0 +1,17 @@
+[
+  {
+    "id": "sample-trips",
+    "title": "Trip photos",
+    "description": "A starter space for travel photos shared from Google Photos.",
+    "type": "PHOTO",
+    "baseUrl": "",
+    "productUrl": "",
+    "filename": "",
+    "mimeType": "image/jpeg",
+    "width": 1600,
+    "height": 1000,
+    "createTime": "2026-05-02T00:00:00Z",
+    "pickedAt": "2026-05-02T00:00:00Z",
+    "displayOrder": 10
+  }
+]

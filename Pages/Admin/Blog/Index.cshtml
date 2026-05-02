@@ -1,0 +1,41 @@
+@page
+@model IndexModel
+@attribute [Microsoft.AspNetCore.Authorization.Authorize(Policy = "AdminOnly")]
+@{
+    ViewData["Title"] = "Blog Admin";
+}
+
+<section class="page-section">
+    <div class="container">
+        <div class="admin-header">
+            <div>
+                <p class="eyebrow">Admin</p>
+                <h1>Blog entries</h1>
+            </div>
+            <a class="button-primary" asp-page="/Admin/Blog/Edit">New post</a>
+        </div>
+
+        <div class="admin-table">
+            @if (Model.Posts.Count == 0)
+            {
+                <p>No blog posts yet.</p>
+            }
+            else
+            {
+                @foreach (var post in Model.Posts)
+                {
+                    <article>
+                        <div>
+                            <span>@(post.IsDraft ? "Draft" : "Published")</span>
+                            <h2>@post.Title</h2>
+                            <p>@post.PublishedOn.ToString("MMMM d, yyyy") · @post.Slug</p>
+                        </div>
+                        <a asp-page="/Admin/Blog/Edit" asp-route-slug="@post.Slug">Edit</a>
+                    </article>
+                }
+            }
+        </div>
+
+        <p class="back-link"><a asp-page="/Admin/Index">Back to admin</a></p>
+    </div>
+</section>

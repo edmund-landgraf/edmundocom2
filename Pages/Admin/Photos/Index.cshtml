@@ -1,0 +1,92 @@
+@page
+@model IndexModel
+@attribute [Microsoft.AspNetCore.Authorization.Authorize(Policy = "AdminOnly")]
+@{
+    ViewData["Title"] = "Manage Photos";
+}
+
+<section class="page-section">
+    <div class="container">
+        <div class="admin-header">
+            <div>
+                <p class="eyebrow">Admin</p>
+                <h1>Photos &amp; videos</h1>
+                <p>Pick media from Google Photos, then publish the chosen items on the public Media page.</p>
+            </div>
+            <a class="button-secondary" asp-page="/Admin/Index">Admin Home</a>
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(Model.StatusMessage))
+        {
+            <div class="form-alert success">@Model.StatusMessage</div>
+        }
+
+        @if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
+        {
+            <div class="form-alert error">@Model.ErrorMessage</div>
+        }
+
+        <div class="admin-photo-panel">
+            <div>
+                <h2>Google Photos Picker</h2>
+                <p>
+                    Connect your Google account, open the picker, select photos or videos, then come back here and import the selection.
+                    For albums, search the album title in Google Photos and select the items you want public.
+                </p>
+            </div>
+            <div class="admin-photo-actions">
+                <form method="post" asp-page-handler="Connect">
+                    <button class="button-primary" type="submit">Connect Google Photos</button>
+                </form>
+
+                @if (!string.IsNullOrWhiteSpace(Model.PickerUri))
+                {
+                    <a class="button-secondary" href="@Model.PickerUri" target="_blank" rel="noopener">Open Picker</a>
+                    <form method="post" asp-page-handler="Import">
+                        <button class="button-primary" type="submit">Import Picked Media</button>
+                    </form>
+                }
+            </div>
+        </div>
+
+        @if (Model.Media.Count == 0)
+        {
+            <div class="empty-state">
+                <p>No shared media has been published yet.</p>
+            </div>
+        }
+        else
+        {
+            <div class="admin-media-list">
+                @foreach (var item in Model.Media)
+                {
+                    <article>
+                        @if (!string.IsNullOrWhiteSpace(item.MediaUrl) && item.IsVideo)
+                        {
+                            <video controls preload="metadata">
+                                <source src="@item.MediaUrl" type="@item.MimeType" />
+                            </video>
+                        }
+                        else if (!string.IsNullOrWhiteSpace(item.ThumbnailUrl))
+                        {
+                            <img src="@item.ThumbnailUrl" alt="@item.DisplayTitle" loading="lazy" />
+                        }
+                        else
+                        {
+                            <div class="media-placeholder photo"></div>
+                        }
+                        <div>
+                            <span>@item.Type</span>
+                            <h2>@item.DisplayTitle</h2>
+                            <p>@item.Filename</p>
+                        </div>
+                        <form method="post" asp-page-handler="Remove">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button class="button-secondary" type="submit">Remove</button>
+                        </form>
+                    </article>
+                }
+            </div>
+        }
+    </div>
+</section>

@@ -510,6 +510,64 @@ h1 {
   margin-top: 34px;
 }
 
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 34px;
+}
+
+.photo-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.photo-card a {
+  position: relative;
+  display: block;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.photo-card img,
+.photo-card video,
+.admin-media-list img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: #fff7dc;
+}
+
+.photo-card div {
+  padding: 18px;
+}
+
+.photo-card h2 {
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+  font-weight: 780;
+}
+
+.photo-card p {
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.media-type {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  border-radius: 999px;
+  background: rgba(39, 35, 23, 0.84);
+  color: #fff;
+  font-size: 0.76rem;
+  font-weight: 800;
+  padding: 5px 10px;
+}
+
 .blog-list {
   display: grid;
   gap: 18px;
@@ -608,6 +666,182 @@ h1 {
   padding: 28px;
 }
 
+.admin-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.admin-action-list,
+.admin-table {
+  display: grid;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.admin-action,
+.admin-table article {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  padding: 24px;
+  text-decoration: none;
+}
+
+.admin-action {
+  display: grid;
+  gap: 8px;
+}
+
+.admin-action span,
+.admin-table span {
+  color: var(--accent-dark);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.admin-action strong,
+.admin-table h2 {
+  font-size: 1.25rem;
+  font-weight: 780;
+}
+
+.admin-action em,
+.admin-table p {
+  color: var(--muted);
+  font-style: normal;
+}
+
+.admin-table article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.admin-table article > a {
+  color: var(--accent-dark);
+  font-weight: 800;
+}
+
+.admin-edit-form {
+  display: grid;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 18px;
+}
+
+.checkbox-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+}
+
+.checkbox-row input {
+  width: auto;
+}
+
+.admin-photo-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  margin-top: 30px;
+  padding: 24px;
+}
+
+.admin-photo-panel h2 {
+  font-size: 1.2rem;
+  font-weight: 780;
+}
+
+.admin-photo-panel p {
+  color: var(--muted);
+}
+
+.admin-photo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.admin-photo-actions form {
+  margin: 0;
+}
+
+.admin-photo-actions button {
+  white-space: nowrap;
+}
+
+.admin-media-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.admin-media-list article {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  padding: 16px;
+}
+
+.admin-media-list img,
+.admin-media-list video,
+.admin-media-list .media-placeholder {
+  border-radius: 6px;
+}
+
+.admin-media-list video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: #272317;
+}
+
+.admin-media-list .media-placeholder {
+  min-height: 105px;
+  margin: 0;
+}
+
+.admin-media-list h2 {
+  margin-bottom: 6px;
+  font-size: 1.12rem;
+  font-weight: 780;
+}
+
+.admin-media-list span {
+  color: var(--accent-dark);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.admin-media-list p {
+  margin: 0;
+  color: var(--muted);
+}
+
 .media-placeholder {
   min-height: 150px;
   margin-bottom: 20px;
@@ -646,8 +880,12 @@ h1 {
   .contact-grid,
   .post-grid,
   .media-grid,
+  .photo-gallery,
   .activity-grid,
-  .link-grid {
+  .link-grid,
+  .admin-form-grid,
+  .admin-photo-panel,
+  .admin-media-list article {
     grid-template-columns: 1fr;
   }
 
@@ -662,6 +900,16 @@ h1 {
 
   .trip-list article {
     grid-template-columns: 1fr;
+  }
+
+  .admin-header,
+  .admin-table article {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .admin-photo-actions {
+    justify-content: flex-start;
   }
 }
 

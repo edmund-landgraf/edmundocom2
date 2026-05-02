@@ -1,4 +1,5 @@
 @page
+@model PhotosVideosModel
 @{
     ViewData["Title"] = "Photos & Videos";
 }
@@ -7,27 +8,50 @@
     <div class="container">
         <div class="section-intro">
             <p class="eyebrow">Photos &amp; Videos</p>
-            <h1>Media shelves for photos, clips, and visual notes.</h1>
+            <h1>Photos, clips, and visual notes from the road.</h1>
             <p>
-                This can become the organized home for galleries, short videos, project snapshots, and embedded media.
+                A public shelf for trips, activities, project snapshots, and the bits worth sharing without needing a login.
             </p>
         </div>
-        <div class="media-grid">
-            <article>
-                <div class="media-placeholder photo"></div>
-                <h2>Photo albums</h2>
-                <p>Grouped by trip, project, family event, or whatever deserves its own little corner.</p>
-            </article>
-            <article>
-                <div class="media-placeholder video"></div>
-                <h2>Video clips</h2>
-                <p>Embedded videos, local clips, walkthroughs, demos, or short personal updates.</p>
-            </article>
-            <article>
-                <div class="media-placeholder archive"></div>
-                <h2>Archive</h2>
-                <p>Older images and media can be kept browsable without making the home page crowded.</p>
-            </article>
-        </div>
+
+        @if (Model.Media.Count == 0)
+        {
+            <div class="empty-state">
+                <p>Nothing public has been shared here yet.</p>
+            </div>
+        }
+        else
+        {
+            <div class="photo-gallery">
+                @foreach (var item in Model.Media)
+                {
+                    <article class="photo-card">
+                        @if (!string.IsNullOrWhiteSpace(item.MediaUrl) && item.IsVideo)
+                        {
+                            <video controls preload="metadata">
+                                <source src="@item.MediaUrl" type="@item.MimeType" />
+                            </video>
+                        }
+                        else if (!string.IsNullOrWhiteSpace(item.ThumbnailUrl))
+                        {
+                            <a href="@(string.IsNullOrWhiteSpace(item.ProductUrl) ? item.MediaUrl : item.ProductUrl)" target="_blank" rel="noopener">
+                                <img src="@item.ThumbnailUrl" alt="@item.DisplayTitle" loading="lazy" />
+                            </a>
+                        }
+                        else
+                        {
+                            <div class="media-placeholder photo"></div>
+                        }
+                        <div>
+                            <h2>@item.DisplayTitle</h2>
+                            @if (!string.IsNullOrWhiteSpace(item.Description))
+                            {
+                                <p>@item.Description</p>
+                            }
+                        </div>
+                    </article>
+                }
+            </div>
+        }
     </div>
 </section>
