@@ -7,4 +7,18 @@
     <UserSecretsId>edmundocom2-contact-email</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="Edmundocom.Blog\Edmundocom.Blog.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Edmundocom.Blog\**\*.cs" />
+    <Content Remove="Edmundocom.Blog\**\*" />
+    <None Remove="Edmundocom.Blog\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Content\Blog\**\*.md" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>

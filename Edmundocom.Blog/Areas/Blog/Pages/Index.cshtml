@@ -1,0 +1,47 @@
+@page "/Blog"
+@model IndexModel
+@{
+    ViewData["Title"] = Model.Options.Title;
+}
+
+<section class="page-section">
+    <div class="container">
+        <div class="section-intro">
+            <p class="eyebrow">@Model.Options.Title</p>
+            <h1>@Model.Options.Description</h1>
+            <p>
+                Posts are loaded by the reusable blog sub-app from the configured content folder.
+            </p>
+        </div>
+
+        @if (Model.Posts.Count == 0)
+        {
+            <div class="empty-state">
+                <h2>No posts yet</h2>
+                <p>Add Markdown files to the configured blog content folder to publish posts.</p>
+            </div>
+        }
+        else
+        {
+            <div class="blog-list">
+                @foreach (var post in Model.Posts)
+                {
+                    <article class="blog-card">
+                        <p class="post-date">@post.PublishedOn.ToString("MMMM d, yyyy")</p>
+                        <h2><a asp-page="/Post" asp-route-slug="@post.Slug">@post.Title</a></h2>
+                        <p>@post.Summary</p>
+                        @if (post.Tags.Count > 0)
+                        {
+                            <ul class="tag-list" aria-label="Tags">
+                                @foreach (var tag in post.Tags)
+                                {
+                                    <li>@tag</li>
+                                }
+                            </ul>
+                        }
+                    </article>
+                }
+            </div>
+        }
+    </div>
+</section>

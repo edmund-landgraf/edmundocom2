@@ -1,0 +1,38 @@
+@page "/Blog/{slug}"
+@model PostModel
+@{
+    ViewData["Title"] = Model.Post?.Title ?? "Post not found";
+}
+
+<section class="page-section">
+    <div class="container narrow">
+        @if (Model.Post is null)
+        {
+            <p class="eyebrow">Blog</p>
+            <h1>Post not found.</h1>
+            <p>The post may have moved, or it may still be a draft.</p>
+            <p><a asp-page="/Index">Back to the blog</a></p>
+        }
+        else
+        {
+            <article class="blog-post">
+                <p class="eyebrow">Blog</p>
+                <h1>@Model.Post.Title</h1>
+                <p class="post-date">@Model.Post.PublishedOn.ToString("MMMM d, yyyy")</p>
+                @if (Model.Post.Tags.Count > 0)
+                {
+                    <ul class="tag-list" aria-label="Tags">
+                        @foreach (var tag in Model.Post.Tags)
+                        {
+                            <li>@tag</li>
+                        }
+                    </ul>
+                }
+                <div class="post-body">
+                    @Html.Raw(Model.Post.HtmlBody)
+                </div>
+                <p class="back-link"><a asp-page="/Index">Back to the blog</a></p>
+            </article>
+        }
+    </div>
+</section>

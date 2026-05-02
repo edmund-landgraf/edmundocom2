@@ -21,3 +21,31 @@ ContactEmail__Password
 ```
 
 The default SMTP host is `smtp.gmail.com` on port `587` with SSL enabled. Gmail usually requires an app password.
+
+## Blog sub-app
+
+The blog is implemented as the reusable `Edmundocom.Blog` Razor Class Library. The host site wires it with:
+
+```csharp
+builder.Services.AddEdmundocomBlog(builder.Configuration.GetSection("Blog"));
+```
+
+Posts are Markdown files with front matter in `Content/Blog`. The host project copies those files to build and publish output.
+
+Required config shape:
+
+```json
+"Blog": {
+  "Title": "Blog",
+  "Description": "Notes, updates, and things worth remembering.",
+  "ContentPath": "Content/Blog",
+  "RecentPostCount": 20
+}
+```
+
+Routes provided by the sub-app:
+
+```text
+/Blog
+/Blog/{slug}
+```

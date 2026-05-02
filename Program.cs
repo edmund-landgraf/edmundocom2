@@ -1,7 +1,10 @@
+using Edmundocom.Blog;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddEdmundocomBlog(builder.Configuration.GetSection("Blog"));
 
 var app = builder.Build();
 
