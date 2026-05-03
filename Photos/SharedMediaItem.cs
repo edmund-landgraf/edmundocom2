@@ -1,5 +1,7 @@
 namespace Edmundocom.Photos;
 
+using System.Text.Json.Serialization;
+
 public sealed class SharedMediaItem
 {
     public string Id { get; set; } = "";
@@ -17,15 +19,19 @@ public sealed class SharedMediaItem
     public DateTimeOffset PickedAt { get; set; } = DateTimeOffset.UtcNow;
     public int DisplayOrder { get; set; }
 
+    [JsonIgnore]
     public bool IsVideo => Type.Equals("VIDEO", StringComparison.OrdinalIgnoreCase) ||
         MimeType.StartsWith("video/", StringComparison.OrdinalIgnoreCase);
 
+    [JsonIgnore]
     public string DisplayTitle => string.IsNullOrWhiteSpace(Title)
         ? Path.GetFileNameWithoutExtension(Filename)
         : Title;
 
+    [JsonIgnore]
     public string MediaUrl => LocalPath;
 
+    [JsonIgnore]
     public string ThumbnailUrl => string.IsNullOrWhiteSpace(LocalPath)
         ? ""
         : LocalPath;

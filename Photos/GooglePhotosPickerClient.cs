@@ -159,6 +159,7 @@ public sealed class GooglePhotosPickerClient
             await source.CopyToAsync(destination, cancellationToken);
 
             item.LocalPath = $"/media/shared/{fileName}";
+            item.BaseUrl = "";
         }
     }
 
